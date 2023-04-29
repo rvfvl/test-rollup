@@ -1,9 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { StyledContainer } from "./Container.styles";
 import { motion } from "framer-motion";
 import testSvg, { ReactComponent as Test } from "../../assets/vite.svg";
+import Image from "../Image/Image";
 
-const Container = ({ children }) => {
+const Container = ({
+  children,
+  color,
+}: {
+  children: ReactNode;
+  color: string;
+}) => {
   return (
     <StyledContainer
       color="yellow"

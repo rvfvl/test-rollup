@@ -9,45 +9,60 @@ import svgr from "@svgr/rollup";
 import image from "@rollup/plugin-image";
 import terser from "@rollup/plugin-terser";
 import postcss from "rollup-plugin-postcss";
+import typescript from "rollup-plugin-typescript2";
+import dts from "rollup-plugin-dts";
 
 import packageJson from "./package.json" assert { type: "json" };
 import { DEFAULT_EXTENSIONS } from "@babel/core";
 
-export default {
-  input: "src/index.js",
-  output: [
-    {
-      file: packageJson.main,
-      format: "cjs",
-      sourcemap: true,
-    },
-    {
-      file: packageJson.module,
-      format: "esm",
-      sourcemap: true,
-    },
-  ],
-  plugins: [
-    peerDepsExternal(),
-    resolve({ extensions: [...DEFAULT_EXTENSIONS] }),
-    commonjs(),
-    babel({
-      extensions: [...DEFAULT_EXTENSIONS],
-      babelHelpers: "runtime",
-      exclude: /node_modules/,
-      presets: ["@babel/preset-env", "@babel/preset-react"],
-      plugins: [
-        "@babel/plugin-transform-runtime",
-        "babel-plugin-styled-components",
-      ],
-    }),
-    json(),
-    //url(),
-    svgr(),
-    image(),
-    //postcss(),
-    terser(),
-    visualizer(),
-  ],
-  external: (id) => id.includes("@babel/runtime"),
-};
+export default [
+  {
+    input: "src/index.ts",
+    output: [
+      {
+        file: packageJson.main,
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: packageJson.module,
+        format: "esm",
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      peerDepsExternal(),
+      resolve({ extensions: [...DEFAULT_EXTENSIONS] }),
+      commonjs(),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        clean: true,
+      }),
+      ,
+      babel({
+        extensions: [...DEFAULT_EXTENSIONS],
+        babelHelpers: "runtime",
+        exclude: /node_modules/,
+        presets: ["@babel/preset-env", "@babel/preset-react"],
+        plugins: [
+          "@babel/plugin-transform-runtime",
+          "babel-plugin-styled-components",
+        ],
+      }),
+      json(),
+      //url(),
+      svgr(),
+      image(),
+      //postcss(),
+      terser(),
+      visualizer(),
+    ],
+    external: (id) => id.includes("@babel/runtime"),
+  },
+  {
+    input: "dist/esm/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    external: [/\.css$/],
+    plugins: [dts()],
+  },
+];
