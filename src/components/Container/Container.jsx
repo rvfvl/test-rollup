@@ -2,7 +2,6 @@ import React from "react";
 import { StyledContainer } from "./Container.styles";
 import { motion } from "framer-motion";
 import testSvg, { ReactComponent as Test } from "../../assets/vite.svg";
-import "./Container.scss";
 
 const Container = ({ children }) => {
   return (

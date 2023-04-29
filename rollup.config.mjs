@@ -11,6 +11,7 @@ import terser from "@rollup/plugin-terser";
 import postcss from "rollup-plugin-postcss";
 
 import packageJson from "./package.json" assert { type: "json" };
+import { DEFAULT_EXTENSIONS } from "@babel/core";
 
 export default {
   input: "src/index.js",
@@ -28,10 +29,10 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    resolve({ extensions: [".js", ".jsx"] }),
+    resolve({ extensions: [...DEFAULT_EXTENSIONS] }),
     commonjs(),
     babel({
-      extensions: [".js", ".jsx"],
+      extensions: [...DEFAULT_EXTENSIONS],
       babelHelpers: "runtime",
       exclude: /node_modules/,
       presets: ["@babel/preset-env", "@babel/preset-react"],
