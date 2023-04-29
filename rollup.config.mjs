@@ -32,7 +32,7 @@ export default [
     ],
     plugins: [
       peerDepsExternal(),
-      resolve({ extensions: [...DEFAULT_EXTENSIONS] }),
+      resolve({ extensions: [...DEFAULT_EXTENSIONS, ".ts", ".tsx"] }),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
@@ -40,7 +40,7 @@ export default [
       }),
       ,
       babel({
-        extensions: [...DEFAULT_EXTENSIONS],
+        extensions: [...DEFAULT_EXTENSIONS, ".ts", ".tsx"],
         babelHelpers: "runtime",
         exclude: /node_modules/,
         presets: ["@babel/preset-env", "@babel/preset-react"],
