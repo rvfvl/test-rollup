@@ -8,6 +8,7 @@ import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
 import image from "@rollup/plugin-image";
 import terser from "@rollup/plugin-terser";
+import postcss from "rollup-plugin-postcss";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -43,6 +44,7 @@ export default {
     //url(),
     svgr(),
     image(),
+    //postcss(),
     terser(),
     visualizer(),
   ],
