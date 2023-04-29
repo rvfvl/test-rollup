@@ -7,6 +7,7 @@ import json from "@rollup/plugin-json";
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
 import image from "@rollup/plugin-image";
+import terser from "@rollup/plugin-terser";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -39,9 +40,10 @@ export default {
       ],
     }),
     json(),
-    url(),
+    //url(),
     svgr(),
-    //image(),
+    image(),
+    terser(),
     visualizer(),
   ],
   external: (id) => id.includes("@babel/runtime"),
