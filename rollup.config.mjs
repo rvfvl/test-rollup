@@ -53,16 +53,10 @@ export default [
       //url(),
       svgr(),
       image(),
-      //postcss(),
+      postcss(),
       terser(),
       visualizer(),
     ],
     external: (id) => id.includes("@babel/runtime"),
-  },
-  {
-    input: "dist/esm/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
-    external: [/\.css$/],
-    plugins: [dts()],
   },
 ];

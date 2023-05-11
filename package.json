@@ -38,15 +38,15 @@
     "@storybook/testing-library": "^0.0.14-next.2",
     "@svgr/rollup": "^7.0.0",
     "@svgr/webpack": "^7.0.0",
-    "@types/react": "^18.2.0",
+    "@types/react": "^17.0.1",
     "@types/react-dom": "^18.2.1",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "^2.1.1",
-    "framer-motion": "^10.12.4",
+    "framer-motion": "^6.5.1",
     "node-sass": "^8.0.0",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "rollup": "^3.21.1",
     "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -58,11 +58,12 @@
     "url-loader": "^4.1.1"
   },
   "peerDependencies": {
-    "framer-motion": "^10.12.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "framer-motion": "^6.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
+    "react-lottie": "^1.2.3",
     "styled-components": "^5.3.10"
   }
 }
